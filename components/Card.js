@@ -1,31 +1,30 @@
 import React from 'react';
-import { withNavigation } from '@react-navigation/compat';
+import { useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { StyleSheet, Dimensions, Image, TouchableWithoutFeedback } from 'react-native';
 import { Block, Text, theme } from 'galio-framework';
 
 import { argonTheme } from '../constants';
 
+const Card = ({ item, horizontal, full, style, ctaColor, imageStyle }) => {
+  const navigation = useNavigation();
 
-class Card extends React.Component {
-  render() {
-    const { navigation, item, horizontal, full, style, ctaColor, imageStyle } = this.props;
-    
-    const imageStyles = [
-      full ? styles.fullImage : styles.horizontalImage,
-      imageStyle
-    ];
-    const cardContainer = [styles.card, styles.shadow, style];
-    const imgContainer = [styles.imageContainer,
-      horizontal ? styles.horizontalStyles : styles.verticalStyles,
-      styles.shadow
-    ];
+  const imageStyles = [
+    full ? styles.fullImage : styles.horizontalImage,
+    imageStyle
+  ];
+  const cardContainer = [styles.card, styles.shadow, style];
+  const imgContainer = [
+    styles.imageContainer,
+    horizontal ? styles.horizontalStyles : styles.verticalStyles,
+    styles.shadow
+  ];
 
-    return (
+  return (
       <Block row={horizontal} card flex style={cardContainer}>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
           <Block flex style={imgContainer}>
-            <Image source={{uri: item.image}} style={imageStyles} />
+            <Image source={{ uri: item.image }} style={imageStyles} />
           </Block>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
@@ -35,9 +34,8 @@ class Card extends React.Component {
           </Block>
         </TouchableWithoutFeedback>
       </Block>
-    );
-  }
-}
+  );
+};
 
 Card.propTypes = {
   item: PropTypes.object,
@@ -45,7 +43,7 @@ Card.propTypes = {
   full: PropTypes.bool,
   ctaColor: PropTypes.string,
   imageStyle: PropTypes.any,
-}
+};
 
 const styles = StyleSheet.create({
   card: {
@@ -95,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default withNavigation(Card);
+export default Card;

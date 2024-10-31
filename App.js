@@ -44,7 +44,7 @@ export default function App() {
       try {
         //Load Resources
         await _loadResourcesAsync();
-        // Pre-load fonts, make any API calls you need to do here
+        // Preload fonts, make any API calls you need to do here
         await Font.loadAsync({
           ArgonExtra: require("./assets/font/argon.ttf"),
         });
