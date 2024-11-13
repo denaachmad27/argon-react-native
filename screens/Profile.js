@@ -115,44 +115,44 @@ class Profile extends React.Component {
                       An artist of considerable range, Jessica name taken by
                       Melbourne …
                     </Text>
-                    <Button
-                      color="transparent"
-                      textStyle={{
-                        color: "#233DD2",
-                        fontWeight: "500",
-                        fontSize: 16
-                      }}
-                    >
-                      Show more
-                    </Button>
+                    {/*<Button*/}
+                    {/*  color="transparent"*/}
+                    {/*  textStyle={{*/}
+                    {/*    color: "#233DD2",*/}
+                    {/*    fontWeight: "500",*/}
+                    {/*    fontSize: 16*/}
+                    {/*  }}*/}
+                    {/*>*/}
+                    {/*  Show more*/}
+                    {/*</Button>*/}
                   </Block>
-                  <Block
-                    row
-                    space="between"
-                  >
-                    <Text bold size={16} color="#525F7F" style={{marginTop: 12}}>
-                      Album
-                    </Text>
-                    <Button
-                      small
-                      color="transparent"
-                      textStyle={{ color: "#5E72E4", fontSize: 12, marginLeft: 24 }}
-                    >
-                      View all
-                    </Button>
-                  </Block>
-                  <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
-                    <Block row space="between" style={{ flexWrap: "wrap" }}>
-                      {Images.Viewed.map((img, imgIndex) => (
-                        <Image
-                          source={{ uri: img }}
-                          key={`viewed-${img}`}
-                          resizeMode="cover"
-                          style={styles.thumb}
-                        />
-                      ))}
-                    </Block>
-                  </Block>
+                  {/*<Block*/}
+                  {/*  row*/}
+                  {/*  space="between"*/}
+                  {/*>*/}
+                  {/*  <Text bold size={16} color="#525F7F" style={{marginTop: 12}}>*/}
+                  {/*    Album*/}
+                  {/*  </Text>*/}
+                  {/*  <Button*/}
+                  {/*    small*/}
+                  {/*    color="transparent"*/}
+                  {/*    textStyle={{ color: "#5E72E4", fontSize: 12, marginLeft: 24 }}*/}
+                  {/*  >*/}
+                  {/*    View all*/}
+                  {/*  </Button>*/}
+                  {/*</Block>*/}
+                  {/*<Block style={{ paddingBottom: -HeaderHeight * 2 }}>*/}
+                  {/*  <Block row space="between" style={{ flexWrap: "wrap" }}>*/}
+                  {/*    {Images.Viewed.map((img, imgIndex) => (*/}
+                  {/*      <Image*/}
+                  {/*        source={{ uri: img }}*/}
+                  {/*        key={`viewed-${img}`}*/}
+                  {/*        resizeMode="cover"*/}
+                  {/*        style={styles.thumb}*/}
+                  {/*      />*/}
+                  {/*    ))}*/}
+                  {/*  </Block>*/}
+                  {/*</Block>*/}
                 </Block>
               </Block>
             </ScrollView>

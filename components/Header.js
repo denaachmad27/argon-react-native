@@ -66,7 +66,7 @@ const Header = (props) => {
     if (title === 'Title') {
       return [
         <BellButton key='chat-title' isWhite={white} />,
-        <BasketButton key='basket-title' isWhite={white} />
+        // <BasketButton key='basket-title' isWhite={white} />
       ]
     }
     switch (title) {
@@ -79,12 +79,12 @@ const Header = (props) => {
       case 'Settings':
         return [
           <BellButton key='bell' isWhite={white} />,
-          <BasketButton key='basket' isWhite={white} />
+          // <BasketButton key='basket' isWhite={white} />
         ];
       case 'Product':
         return [
           <SearchButton key='search-product' isWhite={white} />,
-          <BasketButton key='basket-product' isWhite={white} />
+          // <BasketButton key='basket-product' isWhite={white} />
         ];
       default:
         return null;
@@ -96,33 +96,33 @@ const Header = (props) => {
           right
           color="black"
           style={styles.search}
-          placeholder="What are you looking for?"
+          placeholder="Search"
           placeholderTextColor={'#8898AA'}
           onFocus={() => navigation.navigate('Pro')}
           iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
       />
   );
 
-  const renderOptions = () => {
-    const { optionLeft, optionRight } = props;
-
-    return (
-        <Block row style={styles.options}>
-          <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
-            <Block row middle>
-              <Icon name="diamond" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
-              <Text size={16} style={styles.tabTitle}>{optionLeft || 'Beauty'}</Text>
-            </Block>
-          </Button>
-          <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
-            <Block row middle>
-              <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
-              <Text size={16} style={styles.tabTitle}>{optionRight || 'Fashion'}</Text>
-            </Block>
-          </Button>
-        </Block>
-    );
-  };
+  // const renderOptions = () => {
+  //   const { optionLeft, optionRight } = props;
+  //
+  //   return (
+  //       <Block row style={styles.options}>
+  //         <Button shadowless style={[styles.tab, styles.divider]} onPress={() => navigation.navigate('Pro')}>
+  //           <Block row middle>
+  //             <Icon name="diamond" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
+  //             <Text size={16} style={styles.tabTitle}>{optionLeft || 'Beauty'}</Text>
+  //           </Block>
+  //         </Button>
+  //         <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
+  //           <Block row middle>
+  //             <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
+  //             <Text size={16} style={styles.tabTitle}>{optionRight || 'Fashion'}</Text>
+  //           </Block>
+  //         </Button>
+  //       </Block>
+  //   );
+  // };
 
   const renderTabs = () => {
     const { tabs, tabIndex } = props;
@@ -142,7 +142,7 @@ const Header = (props) => {
     return search || tabs || options ? (
         <Block center>
           {search ? renderSearch() : null}
-          {options ? renderOptions() : null}
+          {/*{options ? renderOptions() : false}*/}
           {tabs ? renderTabs() : null}
         </Block>
     ) : null;

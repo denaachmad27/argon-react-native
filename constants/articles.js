@@ -1,18 +1,21 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {articles} from "./index";
+
 export default [
   {
     title: 'Ice cream is made with carrageenan …',
-    image: 'https://images.unsplash.com/photo-1516559828984-fb3b99548b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80',
+    image: 'assets/images/coffee_1.jpg',
     cta: 'View article', 
     horizontal: true
   },
   {
     title: 'Is makeup one of your daily esse …',
-    image: 'https://images.unsplash.com/photo-1519368358672-25b03afee3bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2004&q=80',
+    image: 'https://source.unsplash.com/rKYRJu0n06Y',
     cta: 'View article'
   },
   {
     title: 'Coffee is more than just a drink: It’s …',
-    image: 'https://images.unsplash.com/photo-1500522144261-ea64433bbe27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80',
+    image: 'https://unsplash.com/photos/coffee-beans-on-gray-steel-wok-rKYRJu0n06Y?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash',
     cta: 'View article' 
   },
   {
@@ -27,3 +30,15 @@ export default [
     horizontal: true
   },
 ];
+
+// Menyimpan data ke AsyncStorage
+const storeData = async () => {
+  try {
+    await AsyncStorage.setItem('@articles_key', JSON.stringify(articles));
+  } catch (e) {
+    console.error("Error storing data", e);
+  }
+};
+
+// Memanggil fungsi untuk menyimpan data
+storeData().then(r => {});

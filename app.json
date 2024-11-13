@@ -5,7 +5,8 @@
     "privacy": "public",
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "version": "1.7.1",
     "orientation": "portrait",
@@ -24,6 +25,14 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim"
+    "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
+    "extra": {
+      "eas": {
+        "projectId": "2f84908b-721b-423e-8cb5-bd9ad0186a50"
+      }
+    },
+    "android": {
+      "package": "com.denaachmad27.argonfreereactnative"
+    }
   }
 }
