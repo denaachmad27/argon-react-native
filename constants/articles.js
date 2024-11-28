@@ -4,7 +4,7 @@ import {articles} from "./index";
 export default [
   {
     title: 'Ice cream is made with carrageenan …',
-    image: 'assets/images/coffee_1.jpg',
+    image: 'assets/imgs/coffee_1.jpg',
     cta: 'View article', 
     horizontal: true
   },

@@ -37,6 +37,15 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
+      case "Logout":
+        return (
+            <Icon
+                name="chart-pie-35"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.WARNING}
+            />
+        );
       case "Profile":
         return (
           <Icon
@@ -54,6 +63,51 @@ class DrawerItem extends React.Component {
             size={14}
             color={focused ? "white" : argonTheme.COLORS.INFO}
           />
+        );
+      case "Request Process":
+        return (
+            <Icon
+                name="spaceship"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.INFO}
+            />
+        );
+      case "Request in Progress":
+        return (
+            <Icon
+                name="support"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.INFO}
+            />
+        );
+      case "Request Completed":
+        return (
+            <Icon
+                name="diamond"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.INFO}
+            />
+        );
+      case "Task":
+        return (
+            <Icon
+                name="bag-17"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.INFO}
+            />
+        );
+      case "My Task":
+        return (
+            <Icon
+                name="bell"
+                family="ArgonExtra"
+                size={14}
+                color={focused ? "white" : argonTheme.COLORS.INFO}
+            />
         );
       case "Getting Started":
         return (<Icon

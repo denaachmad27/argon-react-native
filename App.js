@@ -76,7 +76,7 @@ export default function App() {
     <NavigationContainer onReady={onLayoutRootView}>
       <GalioProvider theme={argonTheme}>
         <Block flex>
-          <Screens />
+          <Screens/>
         </Block>
       </GalioProvider>
     </NavigationContainer>

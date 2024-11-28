@@ -1,19 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   StyleSheet,
   ImageBackground,
   Dimensions,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView, Alert
 } from "react-native";
 import { Block, Checkbox, Text, theme } from "galio-framework";
 
 import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get("screen");
 
+
+
 class Register extends React.Component {
+
   render() {
     return (
       <Block flex middle>
@@ -100,6 +104,7 @@ class Register extends React.Component {
                         }
                       />
                     </Block>
+
                     <Block width={width * 0.8}>
                       <Input
                         password
@@ -161,6 +166,8 @@ class Register extends React.Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
   registerContainer: {

@@ -13,14 +13,14 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Home", "Profile", "Account", "Elements", "Articles"];
+  const screens = ["Home","Profile", "Account","Task","My Task","Request Process","Request in Progress","Request Completed","Logout", "Elements", "Articles"];
   return (
     <Block
       style={styles.container}
       forceInset={{ top: "always", horizontal: "never" }}
     >
       <Block flex={0.06} style={styles.header}>
-        <Image styles={styles.logo} source={Images.Logo} />
+        {/*<Image styles={styles.logo} source={Images.Logo} />*/}
       </Block>
       <Block flex style={{ paddingLeft: 8, paddingRight: 14 }}>
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
@@ -58,7 +58,7 @@ function CustomDrawerContent({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
   },
   header: {
     paddingHorizontal: 28,

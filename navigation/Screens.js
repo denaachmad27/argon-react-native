@@ -1,4 +1,4 @@
-import { Animated, Dimensions, Easing } from "react-native";
+import {Alert, Animated, Dimensions, Easing} from "react-native";
 // header for screens
 import { Header, Icon } from "../components";
 import { argonTheme, tabs } from "../constants";
@@ -13,17 +13,35 @@ import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
 import Profile from "../screens/Profile";
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import Register from "../screens/Register";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from "../screens/LoginScreen";
+import CompletedScreen from "../screens/CompletedScreen";
+import CreateUserScreen from "../screens/CreateUserScreen";
+import FarmersScreen from "../screens/FarmersScreen";
+import InProgressScreen from "../screens/InProgressScreen";
+import MyTasksScreen from "../screens/MyTasksScreen";
+import RequestProcessScreen from "../screens/RequestProcessScreen";
+import TasksScreen from "../screens/TasksScreen";
+import UsersScreen from "../screens/UsersScreen";
+import DashboardScreen from "../screens/DashboardScreen";
+import {useNavigation} from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+
+
+
 
 const { width } = Dimensions.get("screen");
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
+
+
 
 function ElementsStack(props) {
   return (
@@ -150,14 +168,45 @@ function ProfileStack(props) {
   );
 }
 
+function Logoutstack(){
+    const navigation = useNavigation();
+
+    const apiUrl = process.env.EXPO_PUBLIC_API_URL;
+
+    const handleLogout = async () => {
+        try {
+            const token = await AsyncStorage.getItem("token");
+            const response = await axios.get(`${apiUrl}/auth/logout`, {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+                withCredentials: true,
+            });
+
+            if (response.status === 200) {
+                console.log("Logout berhasil");
+                await AsyncStorage.removeItem("token"); // Hapus token dari AsyncStorage
+                Alert.alert("Logout", "Anda telah berhasil logout.", [
+                    { text: "OK", onPress: () => navigation.navigate("Login") },
+                ]);
+            } else {
+                console.log("Logout gagal");
+            }
+        } catch (error) {
+            console.error(error);
+            Alert.alert("Error", "Ada masalah saat logout.");
+        } finally {
+            setLoading(false);
+        }
+    };
+    handleLogout();
+}
+
+
+
 function HomeStack(props) {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: "screen",
-      }}
-    >
+    <Stack.Navigator screenOptions={{ mode: "card", headerShown: "screen", }} >
       <Stack.Screen
         name="Home"
         component={Home}
@@ -197,25 +246,15 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen
-        name="Onboarding"
-        component={Onboarding}
-        option={{
-          headerTransparent: true,
-        }}
-      />
-      <Stack.Screen name="App" component={AppStack} />
+    <Stack.Navigator screenOptions={{ mode: "card", headerShown: false }} initialRouteName="Login" >
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="App" component={AppStack} options={{ headerShown: false }}/>
     </Stack.Navigator>
   );
 }
 
 function AppStack(props) {
+
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
@@ -244,7 +283,6 @@ function AppStack(props) {
           fontWeight: "normal",
         },
       }}
-      initialRouteName="Home"
     >
       <Drawer.Screen
         name="Home"
@@ -254,6 +292,20 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
+          name="Dashboard"
+          component={DashboardScreen}
+          options={{
+              headerShown: false,
+          }}
+      />
+      <Drawer.Screen
+          name="Logout"
+          component={Logoutstack}
+          options={{
+              headerShown: false,
+          }}
+      />
+      <Drawer.Screen
         name="Profile"
         component={ProfileStack}
         options={{
@@ -261,11 +313,32 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
+          name="Request Process"
+          component={RequestProcessScreen}
+          options={{
+              headerShown: false,
+          }}
+      />
+      <Drawer.Screen
         name="Account"
         component={Register}
         options={{
           headerShown: false,
         }}
+      />
+      <Drawer.Screen
+          name="Task"
+          component={TasksScreen}
+          options={{
+              headerShown: false,
+          }}
+      />
+      <Drawer.Screen
+          name="My Task"
+          component={MyTasksScreen}
+          options={{
+              headerShown: false,
+          }}
       />
       <Drawer.Screen
         name="Elements"
@@ -277,6 +350,20 @@ function AppStack(props) {
       <Drawer.Screen
         name="Articles"
         component={ArticlesStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Request in Progress"
+        component={InProgressScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Request Completed"
+        component={CompletedScreen}
         options={{
           headerShown: false,
         }}
